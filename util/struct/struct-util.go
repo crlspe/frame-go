@@ -1,6 +1,7 @@
 package Struct
 
 import (
+	"fmt"
 	"reflect"
 	"strings"
 
@@ -26,4 +27,17 @@ func ToMap(structType any, readTag string, excludeKeyTag string, includeExcluded
 		structMap[key.Name] = value.Interface()
 	}
 	return structMap
+}
+
+func PrintTag(c any, tag string, skipSubtag string) string {
+	// 	tag = "json"  subtag = "-"
+	var str string = ""
+	var confVal = reflect.ValueOf(c)
+	var conf = reflect.TypeOf(c)
+	for i := 0; i < confVal.NumField(); i++ {
+		if conf.Field(i).Tag.Get(tag) != skipSubtag {
+			str += fmt.Sprintln(conf.Field(i).Name, confVal.Field(i))
+		}
+	}
+	return str
 }
