@@ -7,21 +7,21 @@ import (
 	Struct "github.com/crlspe/frame-go/util/struct"
 )
 
-type setting struct {
+type configManager struct {
 	_useTag     string
 	_hideKeyTag string
 	_settings   any
 }
 
-func NewConfiguration(settings any, useTag string, hideKeyTag string) setting {
-	return setting{
+func NewConfigManager(settings any, useTag string, hideKeyTag string) configManager {
+	return configManager{
 		_useTag:     useTag,
 		_hideKeyTag: hideKeyTag,
 		_settings:   settings,
 	}
 }
 
-func (c *setting) LoadFromJson(jsonFilePath string) error {
+func (c *configManager) LoadFromJson(jsonFilePath string) error {
 	var jsonFile, err = os.Open(jsonFilePath)
 	if err != nil {
 		return err
@@ -36,7 +36,7 @@ func (c *setting) LoadFromJson(jsonFilePath string) error {
 	return nil
 }
 
-func (c *setting) SaveToJson(jsonFilePath string, includeHiddenKeyTags ...string) error {
+func (c *configManager) SaveToJson(jsonFilePath string, includeHiddenKeyTags ...string) error {
 	var jsonFile, err = os.Create(jsonFilePath)
 	if err != nil {
 		return err
