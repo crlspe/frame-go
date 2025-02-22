@@ -7,7 +7,6 @@ import (
 
 	"github.com/crlspe/frame-go/color"
 	"github.com/spf13/pflag"
-	"golang.org/x/tools/go/analysis/passes/bools"
 )
 
 type ActionCommand interface {
