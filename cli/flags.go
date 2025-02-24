@@ -5,8 +5,12 @@ type Flags struct {
 }
 
 func (f Flags) Get(flagName string) any {
-    if val, ok := (*f.values)[flagName]; ok {
-        return val
+	return getBool(f.values, flagName)
+}
+
+func getBool(flags *map[string]any, flagName string) bool {
+    if  val, ok := (*flags)[flagName]; ok {
+        return *val.(*bool)
     }
-    return nil
+    return false
 }

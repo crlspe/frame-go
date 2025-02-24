@@ -106,6 +106,10 @@ func (c climanager) parse() ActionCommand {
 	return c.commands[commandName].actionCommand
 }
 
+func (c climanager) getFlagBool(flagName string) bool {
+	return getBool(&c.flags, flagName)
+}
+
 func (c *climanager) RunCli() {
 	var cmd = c.parse()
 	if cmd != nil {
@@ -113,19 +117,6 @@ func (c *climanager) RunCli() {
 			values: &c.flags,
 		})
 	}
-}
-
-func (c climanager) getFlagBool(flagName string) bool {
-	if val, ok := c.flags[flagName]; ok {
-		return val.(bool)
-	}
-	return false
-}
-func (c climanager) getFlag(flagName string) any {
-	if val, ok := c.flags[flagName]; ok {
-		return val
-	}
-	return nil
 }
 
 func (c climanager) printHelp() {
