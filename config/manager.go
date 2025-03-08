@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"os"
 
-	Struct "github.com/crlspe/frame-go/util/struct"
+	_struct "github.com/crlspe/frame-go/util/struct"
 )
 
 type configManager struct {
@@ -43,7 +43,7 @@ func (c *configManager) SaveToJson(jsonFilePath string, includeHiddenKeyTags ...
 	}
 	defer jsonFile.Close()
 
-	var configData = Struct.ToMap(c._settings, c._useTag, c._hideKeyTag, includeHiddenKeyTags...)
+	var configData = _struct.ToMap(c._settings, c._useTag, c._hideKeyTag, includeHiddenKeyTags...)
 
 	var encoder = json.NewEncoder(jsonFile)
 	encoder.SetIndent("", "    ")
