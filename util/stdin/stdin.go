@@ -1,4 +1,4 @@
-package stdin
+package _stdin
 
 import (
 	"bufio"

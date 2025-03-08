@@ -1,7 +1,7 @@
-package cli
+package _cli
 
 type Flags struct {
-    values *map[string]any
+	values *map[string]any
 }
 
 func (f Flags) Get(flagName string) any {
@@ -9,8 +9,8 @@ func (f Flags) Get(flagName string) any {
 }
 
 func getBool(flags *map[string]any, flagName string) bool {
-    if  val, ok := (*flags)[flagName]; ok {
-        return *val.(*bool)
-    }
-    return false
+	if val, ok := (*flags)[flagName]; ok {
+		return *val.(*bool)
+	}
+	return false
 }

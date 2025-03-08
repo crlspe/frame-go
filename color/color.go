@@ -1,4 +1,4 @@
-package color
+package _color
 
 const (
 	Reset         = "\033[0m"

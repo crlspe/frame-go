@@ -1,11 +1,11 @@
-package cli
+package _cli
 
 import (
 	"fmt"
 	"os"
 	"strings"
 
-	"github.com/crlspe/frame-go/color"
+	_color "github.com/crlspe/frame-go/color"
 	"github.com/spf13/pflag"
 )
 
@@ -121,15 +121,15 @@ func (c *climanager) RunCli() {
 
 func (c climanager) printHelp() {
 	c.printVersion()
-	fmt.Println("Usage:", color.Blue("snp"), color.Yellow("<command>"), color.Green("<args>"))
+	fmt.Println("Usage:", _color.Blue("snp"), _color.Yellow("<command>"), _color.Green("<args>"))
 	fmt.Println("Available commands:")
 	for cmdname, set := range c.commands {
-		fmt.Println(color.Yellow(cmdname) + "\t" + set.description)
+		fmt.Println(_color.Yellow(cmdname) + "\t" + set.description)
 		set.cmd.PrintDefaults()
 	}
 	os.Exit(0)
 }
 
 func (c climanager) printVersion() {
-	fmt.Println(color.BrightBlue(strings.ToUpper(c.appName) + " Version " + c.version))
+	fmt.Println(_color.BrightBlue(strings.ToUpper(c.appName) + " Version " + c.version))
 }
