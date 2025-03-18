@@ -6,6 +6,21 @@ import (
 	_path "github.com/crlspe/frame-go/util/path"
 )
 
+type location struct {
+	OSName string
+}
+
+func Locations() location {
+
+	return location{
+		OSName: "linux",
+	}
+}
+
+func (l location) GetUserHomeFolder() string {
+	return HomeFolder()
+}
+
 func HomeFolder() string {
 	homeDir, err := os.UserHomeDir()
 	if err != nil {

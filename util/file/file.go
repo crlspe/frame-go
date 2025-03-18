@@ -16,6 +16,21 @@ func GetLines(filename string) ([]string, error) {
 	return strings.Split(string(content), "\n"), nil
 }
 
+func NewFileWithContent(filePath string, content string) error {
+	file, err := os.Create(filePath)
+	if err != nil {
+		return err
+	}
+
+	defer file.Close()
+	_, err = file.WriteString(content)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func AppendContent(filename string, content string) error {
 	if len(strings.TrimSpace(content)) == 0 {
 		return nil
