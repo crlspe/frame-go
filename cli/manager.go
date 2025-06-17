@@ -91,7 +91,7 @@ func (c climanager) parse() ActionCommand {
 
 	var commandName = os.Args[1]
 	if _, ok := c.commands[commandName]; !ok {
-		fmt.Println("command does not exists")
+		fmt.Println("command", _color.Red(commandName), "does not exists")
 		c.printHelp()
 		return nil
 	}
